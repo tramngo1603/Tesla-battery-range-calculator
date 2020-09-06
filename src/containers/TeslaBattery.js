@@ -24,7 +24,8 @@ class TeslaBattery extends React.Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.updateCounterState = this.updateCounterState.bind(this);
-    this.handleChangeWheels = this.handleChangeWheels.bind(this)
+    this.handleChangeWheels = this.handleChangeWheels.bind(this);
+    this.handleChangeClimate = this.handleChangeClimate.bind(this);
 
     this.state = {
       carstats: [],
@@ -42,7 +43,7 @@ updateCounterState(title, newValue) {
     // update config state with new value
     title === 'Speed' ? config['speed'] = newValue : config['temperature'] = newValue;
     // update our state
-    this.setState({ config });
+    this.setState({ config }, () => {this.statsUpdate()});
   }
 increment(e, title) {
     e.preventDefault();
@@ -96,12 +97,14 @@ decrement(e, title) {
     }
 
 statsUpdate() {
+ const config = {...this.state.config};
  const carModels = ['60', '60D', '75', '75D', '90D', 'P100D'];
  // Fetch model info from BatteryService and calculate then update state
  this.setState({
-   carstats: this.calculateStats(carModels, this.state.config)
+   carstats: this.calculateStats(carModels, config)
  })
 }
+
 
 componentDidMount() {
  this.statsUpdate();
@@ -110,14 +113,14 @@ componentDidMount() {
 // handle aircon & heating click event handler
 handleChangeClimate() {
   const config = {...this.state.config};
-  config['climate'] = !this.state.config.climate;
-  this.setState({ config });
+  config['climate'] = ! this.state.config.climate;
+  this.setState({ config }, () => {this.statsUpdate()});
 }
 
 handleChangeWheels(size) {
   const config = {...this.state.config};
   config['wheels'] = size;
-  this.setState({ config });
+  this.setState({ config }, () => {this.statsUpdate()});
 }
 
   render() {
