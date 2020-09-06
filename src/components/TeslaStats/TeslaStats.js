@@ -4,10 +4,13 @@ import './TeslaStats.css';
 
 const TeslaStats = (props) => {
   const listItems = props.carstats.map((stat) => (
+    // <div>
     <li key={stat.model}>
+    <label>{stat.model}</label>
       <div className={'tesla-stats-icon tesla-stats-icon--${stat.model.toLowerCase()}'}></div>
       <p>{stat.miles}</p>
     </li>
+    // </div>
   ));
 
   return (

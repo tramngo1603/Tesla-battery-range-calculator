@@ -2,6 +2,13 @@
   margin: -70px 0 30px; }
   .tesla-stats ul {
     text-align: center; }
+    .tesla-stats ul label {
+      font-size: 20px;
+      font-weight: normal;
+      font-family: 'RobotoNormal';
+      position: relative;
+    }
+
     .tesla-stats ul li {
       display: inline-block;
       width: 130px;
