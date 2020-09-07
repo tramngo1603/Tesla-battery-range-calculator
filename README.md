@@ -5,6 +5,6 @@
 
 Below is the final image of the project. Please also check out the live version [here](http://tram-tesla-car-battery-calculator.surge.sh/).
 
-<p>
-  <img style="width:100%;height:250px;margin-top:15px" src="src/assets/final-gif.gif"/>
+<p align="center">
+  <img style="width:800px;height:250px;margin-top:15px" src="src/assets/final-gif.gif"/>
  </p>
